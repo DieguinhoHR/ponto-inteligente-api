@@ -1,9 +1,7 @@
 package com.agilworks.pontointeligente.entities;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +22,8 @@ public class Empresa implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    //@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -42,7 +41,7 @@ public class Empresa implements Serializable {
         this.razaoSocial = razaoSocial;
     }
 
-    @Column(name = "cnpj", nullable = false)
+    @Column(name = "cnpj", unique=true, nullable = false)
     public String getCnpj() {
         return cnpj;
     }
